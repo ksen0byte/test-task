@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.example.Subject.ENGLISH;
@@ -18,10 +19,10 @@ class MainTest {
     @BeforeEach
     void setUp() {
         // why do we need setUp?
-        students = List.of(
-                new Student("Andrew", List.of(new Grade(MATH, 100), new Grade(ENGLISH, 75))),
-                new Student("Peter", List.of(new Grade(MATH, 80), new Grade(ENGLISH, 90))),
-                new Student("Colin", List.of(new Grade(MATH, 50), new Grade(ENGLISH, 70)))
+        students = Arrays.asList(
+                new Student("Andrew", Arrays.asList(new Grade(MATH, 100), new Grade(ENGLISH, 75))),
+                new Student("Peter", Arrays.asList(new Grade(MATH, 80), new Grade(ENGLISH, 90))),
+                new Student("Colin", Arrays.asList(new Grade(MATH, 50), new Grade(ENGLISH, 70)))
         );
     }
 
@@ -40,14 +41,14 @@ class MainTest {
     @Test
     void sortStudents() {
         // implement the test
-        var result = Main.sortStudents(students);
+        List<Student> result = Main.sortStudents(this.students);
         assertEquals(null, result);
     }
 
     @Test
     void calculateAverageGrade() {
-        var expected = 77.5;
-        var result = Main.calculateAverageGrade(students);
+        Double expected = 77.5;
+        Double result = Main.calculateAverageGrade(students);
         assertEquals(expected, result); // Do you notice any issues with this assert?
     }
 
